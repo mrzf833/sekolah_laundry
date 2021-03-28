@@ -16,6 +16,7 @@ class OutletSeeder extends Seeder
     {
         Outlet::create([
             'id' => 2,
+            'tlp' => '082278356472',
             'nama' => 'pagar2',
             'alamat' => 'asdasdasd',
         ]);
