@@ -51,7 +51,7 @@
                             <input type="number" id="qty" class="form-control" name="qty" min="1">
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="keterangan">Keterangan</label>
                             <textarea id="keterangan" class="form-control" cols="30" rows="3"></textarea>
@@ -208,7 +208,9 @@ var jumlah_pembayaran = 0;
         $('#member-transaksi').select2()
         $('#status-transaksi').select2()
         $('#dibayar-transaksi').select2()
+
         var paket_table = $('#paket-table').DataTable({
+            responsive: true,
             "columns": [
                     { "data": "outlet" },
                     { "data": "jenis" },
@@ -329,7 +331,11 @@ var jumlah_pembayaran = 0;
         })
 
         $(document).on('click', '.delete-transaksi', function(){
-            let row = paket_table.row($(this).parents('tr'));
+            let tr = $(this).closest('tr');
+            if(tr.hasClass('child')){
+                tr = tr.prev()
+            }
+            let row = paket_table.row(tr);
             row.remove().draw();
 
             let semua_transaksi = paket_table.rows().data();

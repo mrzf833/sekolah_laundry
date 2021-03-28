@@ -119,6 +119,7 @@
     $('#jenis_kelamin-delete').select2();
     $(document).ready(function() {
         var table_member = $('#member').DataTable({
+            responsive: true,
             processing: true,
             serverSide: true,
             ajax: {

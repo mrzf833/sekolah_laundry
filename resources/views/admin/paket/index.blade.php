@@ -154,6 +154,7 @@
     $('#jenis-delete').select2()
     $(document).ready(function() {
         var table_paket = $('#paket').DataTable({
+            responsive: true,
             processing: true,
             serverSide: true,
             ajax: {
@@ -191,7 +192,11 @@
 
         $(document).on('click','.btn-edit-paket',function(){
             $('#modal-edit-paket').modal();
-            let data = table_paket.rows($(this).parents("tr")).data()[0];
+            let tr = $(this).closest('tr');
+            if(tr.hasClass('child')){
+                tr = tr.prev()
+            }
+            let data = table_paket.row(tr).data();
             let url = "{{ route('admin.paket.index') }}"
             $('#modal-edit-paket form').attr('action', url + "/" + data.id + "/edit")
             $('#modal-edit-paket form #outlet-edit').val(data.outlets.id).trigger('change')
@@ -202,7 +207,11 @@
 
         $(document).on('click','.btn-delete-paket',function(){
             $('#modal-delete-paket').modal();
-            let data = table_paket.rows($(this).parents("tr")).data()[0];
+            let tr = $(this).closest('tr');
+            if(tr.hasClass('child')){
+                tr = tr.prev()
+            }
+            let data = table_paket.row(tr).data();
             let url = "{{ route('admin.paket.index') }}"
             $('#modal-delete-paket form').attr('action', url + "/" + data.id + "/delete")
             $('#modal-delete-paket form #outlet-delete').val(data.outlets.id).trigger('change')

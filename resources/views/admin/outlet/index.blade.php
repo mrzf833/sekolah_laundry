@@ -92,6 +92,7 @@
 <script>
     $(document).ready(function() {
         var table_outlet = $('#outlet').DataTable({
+            responsive: true,
             processing: true,
             serverSide: true,
             ajax: {
@@ -124,7 +125,11 @@
 
         $(document).on('click','.btn-edit-outlet',function(){
             $('#modal-edit-outlet').modal();
-            let data = table_outlet.rows($(this).parents("tr")).data()[0];
+            let tr = $(this).closest('tr');
+            if(tr.hasClass('child')){
+                tr = tr.prev()
+            }
+            let data = table_outlet.row(tr).data();
             let url = "{{ route('admin.outlet.index') }}"
             $('#modal-edit-outlet form').attr('action', url + "/" + data.id + "/edit")
             $('#modal-edit-outlet form #nama-edit').val(data.nama)
@@ -134,7 +139,11 @@
 
         $(document).on('click','.btn-delete-outlet',function(){
             $('#modal-delete-outlet').modal();
-            let data = table_outlet.rows($(this).parents("tr")).data()[0];
+            let tr = $(this).closest('tr');
+            if(tr.hasClass('child')){
+                tr = tr.prev()
+            }
+            let data = table_outlet.row(tr).data();
             let url = "{{ route('admin.outlet.index') }}"
             $('#modal-delete-outlet form').attr('action', url + "/" + data.id + "/delete")
             $('#modal-delete-outlet form #nama-delete').val(data.nama)
