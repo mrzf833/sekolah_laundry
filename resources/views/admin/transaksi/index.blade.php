@@ -218,6 +218,7 @@ var jumlah_pembayaran = 0;
                     { "data": "harga" },
                     { "data": "qty" },
                     { "data": "keterangan" },
+                    { "data": null },
                 ],
                 columnDefs: [
                     {
