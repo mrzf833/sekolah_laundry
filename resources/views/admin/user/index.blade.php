@@ -154,6 +154,7 @@
     $('#role-delete').select2();
     $(document).ready(function() {
         var table_user = $('#user').DataTable({
+            responsive: true,
             processing: true,
             serverSide: true,
             ajax: {
@@ -191,7 +192,11 @@
 
         $(document).on('click','.btn-edit-user',function(){
             $('#modal-edit-user').modal();
-            let data = table_user.rows($(this).parents("tr")).data()[0];
+            let tr = $(this).closest('tr');
+            if(tr.hasClass('child')){
+                tr = tr.prev()
+            }
+            let data = table_user.row(tr).data();
             let url = "{{ route('admin.user.index') }}"
             $('#modal-edit-user form').attr('action', url + "/" + data.id + "/edit")
             $('#modal-edit-user form #nama-edit').val(data.nama)
@@ -203,7 +208,11 @@
 
         $(document).on('click','.btn-delete-user',function(){
             $('#modal-delete-user').modal();
-            let data = table_user.rows($(this).parents("tr")).data()[0];
+            let tr = $(this).closest('tr');
+            if(tr.hasClass('child')){
+                tr = tr.prev()
+            }
+            let data = table_user.row(tr).data();
             let url = "{{ route('admin.user.index') }}"
             $('#modal-delete-user form').attr('action', url + "/" + data.id + "/delete")
             $('#modal-delete-user form #nama-delete').val(data.nama)

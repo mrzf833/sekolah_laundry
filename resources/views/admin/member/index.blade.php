@@ -151,7 +151,11 @@
 
         $(document).on('click','.btn-edit-member',function(){
             $('#modal-edit-member').modal();
-            let data = table_member.rows($(this).parents("tr")).data()[0];
+            let tr = $(this).closest('tr');
+            if(tr.hasClass('child')){
+                tr = tr.prev()
+            }
+            let data = table_member.row(tr).data();
             let url = "{{ route('admin.member.index') }}"
             $('#modal-edit-member form').attr('action', url + "/" + data.id + "/edit")
             $('#modal-edit-member form #nama-edit').val(data.nama)
@@ -162,7 +166,11 @@
 
         $(document).on('click','.btn-delete-member',function(){
             $('#modal-delete-member').modal();
-            let data = table_member.rows($(this).parents("tr")).data()[0];
+            let tr = $(this).closest('tr');
+            if(tr.hasClass('child')){
+                tr = tr.prev()
+            }
+            let data = table_member.row(tr).data();
             let nama = data.nama
             let url = "{{ route('admin.member.index') }}"
             $('#modal-delete-member form').attr('action', url + "/" + data.id + "/delete")

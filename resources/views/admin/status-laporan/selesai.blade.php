@@ -16,7 +16,7 @@
                 <h5 class="card-title d-inline-block">Status Selesai</h5>
                 @component('components.datatable',['datas' => ['Invoice', 'Outlet', 'Member', 'tanggal', 'batas waktu', 'tanggal bayar', 'biaya tambahan', 'diskon','pajak', 'status', 'dibayar', 'user', 'aksi']])
                     @slot('id')
-                        baru
+                        selesai
                     @endslot
                 @endcomponent
             </>
@@ -186,7 +186,7 @@
     $('#status-delete').select2();
     $('#dibayar-delete').select2();
     $(document).ready(function() {
-        var table_baru = $('#baru').DataTable({
+        var table_selesai = $('#selesai').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
@@ -269,7 +269,7 @@
             if(tr.hasClass('child')){
                 tr = tr.prev()
             }
-            let data = table_baru.row(tr).data();
+            let data = table_selesai.row(tr).data();
             let url = "{{ route('admin.transaksi.index') }}"
             let tgl = mysqlTimeStampToDateTime(data.tgl)
             let batas_waktu = mysqlTimeStampToDateTime(data.batas_waktu)
@@ -293,7 +293,7 @@
             if(tr.hasClass('child')){
                 tr = tr.prev()
             }
-            let data = table_baru.row(tr).data();
+            let data = table_selesai.row(tr).data();
             let url = "{{ route('admin.transaksi.index') }}"
             let tgl = mysqlTimeStampToDateTime(data.tgl)
             let batas_waktu = mysqlTimeStampToDateTime(data.batas_waktu)
