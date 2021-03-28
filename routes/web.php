@@ -90,8 +90,20 @@ Route::group(['middleware' => 'auth'], function(){
         });
 
         Route::group(['prefix' => 'status-laporan', 'as' => 'status.laporan.'], function(){
+            Route::get('/all', [AdminStatusLaporanController::class, 'all'])->name('all');
+            Route::get('/all/datatable', [AdminStatusLaporanController::class, 'all_datatable'])->name('all.datatable');
+
             Route::get('/baru', [AdminStatusLaporanController::class, 'baru'])->name('baru');
             Route::get('/baru/datatable', [AdminStatusLaporanController::class, 'baru_datatable'])->name('baru.datatable');
+
+            Route::get('/proses', [AdminStatusLaporanController::class, 'proses'])->name('proses');
+            Route::get('/proses/datatable', [AdminStatusLaporanController::class, 'proses_datatable'])->name('proses.datatable');
+
+            Route::get('/selesai', [AdminStatusLaporanController::class, 'selesai'])->name('selesai');
+            Route::get('/selesai/datatable', [AdminStatusLaporanController::class, 'selesai_datatable'])->name('selesai.datatable');
+
+            Route::get('/diambil', [AdminStatusLaporanController::class, 'diambil'])->name('diambil');
+            Route::get('/diambil/datatable', [AdminStatusLaporanController::class, 'diambil_datatable'])->name('diambil.datatable');
         });
     });
 });

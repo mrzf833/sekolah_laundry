@@ -26,8 +26,20 @@
             <li class="{{ request()->routeIs('admin.status.laporan.*') ? 'active-page' : '' }}">
                 <a href="#" class="{{ request()->routeIs('admin.status.laporan.*') ? 'active-page' : '' }}"><i class="material-icons">storefront</i>Status Laporan<i class="material-icons has-sub-menu">add</i></a>
                 <ul class="sub-menu">
+                    <li class="{{ request()->routeIs('admin.status.laporan.all') ? 'active' : '' }}">
+                        <a href="{{ route('admin.status.laporan.all') }}" class="{{ request()->routeIs('admin.status.laporan.all') ? 'active' : '' }}">All</a>
+                    </li>
                     <li class="{{ request()->routeIs('admin.status.laporan.baru') ? 'active' : '' }}">
                         <a href="{{ route('admin.status.laporan.baru') }}" class="{{ request()->routeIs('admin.status.laporan.baru') ? 'active' : '' }}">Baru</a>
+                    </li>
+                    <li class="{{ request()->routeIs('admin.status.laporan.proses') ? 'active' : '' }}">
+                        <a href="{{ route('admin.status.laporan.proses') }}" class="{{ request()->routeIs('admin.status.laporan.proses') ? 'active' : '' }}">Proses</a>
+                    </li>
+                    <li class="{{ request()->routeIs('admin.status.laporan.selesai') ? 'active' : '' }}">
+                        <a href="{{ route('admin.status.laporan.selesai') }}" class="{{ request()->routeIs('admin.status.laporan.selesai') ? 'active' : '' }}">Selesai</a>
+                    </li>
+                    <li class="{{ request()->routeIs('admin.status.laporan.diambil') ? 'active' : '' }}">
+                        <a href="{{ route('admin.status.laporan.diambil') }}" class="{{ request()->routeIs('admin.status.laporan.diambil') ? 'active' : '' }}">Diambil</a>
                     </li>
                 </ul>
             </li>
