@@ -15,3 +15,12 @@
 ## admin
 - `username : admin`
 - `password : admin`
+
+# dengan docker
+## install
+- `docker compose up -d --build`
+- `docker exec -it laundry_app /bin/sh`
+- `php artisan migrate:fresh --seed`
+
+## uninstall
+- `docker compose down --rmi=all`
