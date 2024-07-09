@@ -11,11 +11,6 @@
 - `php artisan migrate:fresh --seed`
 - `php artisan storage:link`
 
-# user default
-## admin
-- `username : admin`
-- `password : admin`
-
 # dengan docker
 ## install
 - `docker compose up -d --build`
@@ -24,3 +19,8 @@
 
 ## uninstall
 - `docker compose down --rmi=all`
+
+# user default
+## admin
+- `username : admin`
+- `password : admin`
